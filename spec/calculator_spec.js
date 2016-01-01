@@ -23,6 +23,12 @@ describe('Markup', function() {
     });
   });
 
+  describe('Electronics Markup', function() {
+    it('should increase price by 2%', function() {
+      expect(electronics(10)).toEqual(10.20);
+    });
+  });
+
 });
 
 

@@ -22,3 +22,10 @@ var food = function(price){
   var roundedPrice = Math.round(markedupPrice * 100) / 100
   return roundedPrice
 };
+
+var electronics = function(price){
+  var markupPercentage = 0.02;
+  var markedupPrice = price * (1 + markupPercentage)
+  var roundedPrice = Math.round(markedupPrice * 100) / 100
+  return roundedPrice
+};
