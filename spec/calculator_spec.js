@@ -10,9 +10,21 @@ describe('Markup', function() {
       expect(perPerson(10, 3)).toEqual(10.45);
     });
   });
+
+  describe('Pharmaceuticals Markup', function() {
+    it('should increase price by 13%', function() {
+      expect(pharma(10)).toEqual(11.30);
+    });
+  });
+
+
 });
 
-// * For each person that needs to work on the job, there is a markup of 1.2%
+
+
+// * If pharmaceuticals are involved, there is an immediate 7.5% markup
+// * For food, there is a 13% markup
+// * Electronics require a 2% markup
 
 // Matcher examples:
 
