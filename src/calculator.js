@@ -1,30 +1,41 @@
+var markupPercentage;
+
+var percentages = {
+  flat: 0.05,
+  perPerson: 0.015,
+  pharma: 0.075,
+  food: 0.13,
+  electronics: 0.02
+}
+
+
 var flat = function(price) {
-  var markupPercentage = 0.05;
+  markupPercentage = percentages.flat;
   return price * (1 + markupPercentage);
 };
 
 var perPerson = function(price, people){
-  var markupPercentage = 0.015;
+  markupPercentage = percentages.perPerson;
   var totalPercentage = markupPercentage * people;
   return price * (1 + totalPercentage);
 };
 
 var pharma = function(price){
-  var markupPercentage = 0.075;
+  markupPercentage = percentages.pharma;
   var markedupPrice = price * (1 + markupPercentage)
   var roundedPrice = Math.round(markedupPrice * 100) / 100
   return roundedPrice
 };
 
 var food = function(price){
-  var markupPercentage = 0.13;
+  markupPercentage = percentages.food;
   var markedupPrice = price * (1 + markupPercentage)
   var roundedPrice = Math.round(markedupPrice * 100) / 100
   return roundedPrice
 };
 
 var electronics = function(price){
-  var markupPercentage = 0.02;
+  markupPercentage = percentages.electronics;
   var markedupPrice = price * (1 + markupPercentage)
   var roundedPrice = Math.round(markedupPrice * 100) / 100
   return roundedPrice
