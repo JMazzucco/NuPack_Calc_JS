@@ -17,6 +17,11 @@ describe('Markup', function() {
     });
   });
 
+  describe('Food Markup', function() {
+    it('should increase price by 13%', function() {
+      expect(food(10)).toEqual(11.30);
+    });
+  });
 
 });
 

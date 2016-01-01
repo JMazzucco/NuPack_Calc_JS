@@ -15,3 +15,10 @@ var pharma = function(price){
   var roundedPrice = Math.round(markedupPrice * 100) / 100
   return roundedPrice
 };
+
+var food = function(price){
+  var markupPercentage = 0.13;
+  var markedupPrice = price * (1 + markupPercentage)
+  var roundedPrice = Math.round(markedupPrice * 100) / 100
+  return roundedPrice
+};
