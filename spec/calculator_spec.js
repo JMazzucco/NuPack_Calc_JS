@@ -1,5 +1,9 @@
-describe('operators', function() {
-	it('must add two numbers')
+describe('Markup', function() {
+  describe('Flat Markup', function() {
+    it('should increase price by 5%', function() {
+      expect(flat(10)).toEqual(10.5);
+    });
+  });
 });
 
 
