@@ -12,8 +12,8 @@ describe('Markup', function() {
   });
 
   describe('Pharmaceuticals Markup', function() {
-    it('should increase price by 13%', function() {
-      expect(pharma(10)).toEqual(11.30);
+    it('should increase price by 7.5%', function() {
+      expect(pharma(10)).toEqual(10.75);
     });
   });
 

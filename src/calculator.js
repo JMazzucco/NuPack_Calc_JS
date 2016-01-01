@@ -10,7 +10,7 @@ var perPerson = function(price, people){
 };
 
 var pharma = function(price){
-  var markupPercentage = 0.13;
+  var markupPercentage = 0.075;
   var markedupPrice = price * (1 + markupPercentage)
   var roundedPrice = Math.round(markedupPrice * 100) / 100
   return roundedPrice
