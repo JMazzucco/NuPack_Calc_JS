@@ -1,4 +1,4 @@
-describe('Markup', function() {
+describe('Markup Calculator', function() {
 
   beforeEach(function() {
     markupCalc.markupCategory = undefined;
@@ -47,5 +47,14 @@ describe('Markup', function() {
     });
   });
 
+});
+
+describe('Markup Manager', function() {
+  describe('Flat Markup', function() {
+    it('should add a flat markup to every given price', function() {
+      markupCalc.price = 10;
+      expect(addFlatMarkup()).toEqual(10.5);
+    });
+  });
 });
 

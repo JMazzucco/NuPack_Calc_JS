@@ -23,3 +23,9 @@ var markupCalc = {
     return Math.round(totalPrice * 100) / 100
   }
 };
+
+
+var addFlatMarkup = function(){
+  markupCalc.markupCategory = 'flat';
+  return markupCalc.priceWithMarkup();
+};
