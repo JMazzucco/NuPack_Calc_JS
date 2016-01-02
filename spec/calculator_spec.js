@@ -1,55 +1,51 @@
 describe('Markup', function() {
+
+  beforeEach(function() {
+    markupCalc.markupCategory = undefined;
+    markupCalc.people = undefined;
+    markupCalc.price = undefined;
+  });
+
   describe('Flat Markup', function() {
     it('should markup price by of 5%', function() {
-      expect(flat(10)).toEqual(10.5);
+      markupCalc.markupCategory = 'flat';
+      markupCalc.price = 10;
+      expect(markupCalc.priceWithMarkup()).toEqual(10.5);
     });
   });
 
   describe('Markup Per Person', function() {
     it('should increase price by 1.5% for each person', function() {
-      expect(perPerson(10, 3)).toEqual(10.45);
+      markupCalc.markupCategory = 'perPerson';
+      markupCalc.people = 3;
+      markupCalc.price = 10;
+      expect(markupCalc.priceWithMarkup()).toEqual(10.36);
     });
   });
 
   describe('Pharmaceuticals Markup', function() {
     it('should increase price by 7.5%', function() {
-      expect(pharma(10)).toEqual(10.75);
+      markupCalc.markupCategory = 'pharma';
+      markupCalc.price = 10;
+      expect(markupCalc.priceWithMarkup()).toEqual(10.75);
     });
   });
 
   describe('Food Markup', function() {
     it('should increase price by 13%', function() {
-      expect(food(10)).toEqual(11.30);
+      markupCalc.markupCategory = 'food';
+      markupCalc.price = 10;
+      expect(markupCalc.priceWithMarkup()).toEqual(11.30);
     });
   });
 
   describe('Electronics Markup', function() {
     it('should increase price by 2%', function() {
-      expect(electronics(10)).toEqual(10.20);
+      markupCalc.markupCategory = 'electronics';
+      markupCalc.price = 10;
+      expect(markupCalc.priceWithMarkup()).toEqual(10.20);
     });
   });
 
 });
-
-
-
-// * If pharmaceuticals are involved, there is an immediate 7.5% markup
-// * For food, there is a 13% markup
-// * Electronics require a 2% markup
-
-// Matcher examples:
-
-// expect('Hello World!').toEqual('Hello World!');
-// expect('Hello World!').not.toEqual('Goodbye!');
-// expect('Hello World!').toNotEqual('Hi!');
-// expect([1, 2, 3]).toEqual([1, 2, 3]);
-
-// expect(false).toBeFalsy();
-
-// expect(true).toBeTruthy();
-// expect({}).toBeDefined();
-
-// expect(null).toBeNull();
-// expect([1, 2, 3]).toContain(2);
-
 

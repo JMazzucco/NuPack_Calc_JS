@@ -1,42 +1,25 @@
-var markupPercentage;
+var markupCalc = {
+  people: undefined,
+  markupCategory: undefined,
+  price: undefined,
 
-var percentages = {
-  flat: 0.05,
-  perPerson: 0.015,
-  pharma: 0.075,
-  food: 0.13,
-  electronics: 0.02
-}
+  percentages: {
+    'flat': 0.05,
+    'perPerson': function(people){
+      return (0.012 * people)
+    },
+    'pharma': 0.075,
+    'food': 0.13,
+    'electronics': 0.02
+  },
 
-
-var flat = function(price) {
-  markupPercentage = percentages.flat;
-  return price * (1 + markupPercentage);
-};
-
-var perPerson = function(price, people){
-  markupPercentage = percentages.perPerson;
-  var totalPercentage = markupPercentage * people;
-  return price * (1 + totalPercentage);
-};
-
-var pharma = function(price){
-  markupPercentage = percentages.pharma;
-  var markedupPrice = price * (1 + markupPercentage)
-  var roundedPrice = Math.round(markedupPrice * 100) / 100
-  return roundedPrice
-};
-
-var food = function(price){
-  markupPercentage = percentages.food;
-  var markedupPrice = price * (1 + markupPercentage)
-  var roundedPrice = Math.round(markedupPrice * 100) / 100
-  return roundedPrice
-};
-
-var electronics = function(price){
-  markupPercentage = percentages.electronics;
-  var markedupPrice = price * (1 + markupPercentage)
-  var roundedPrice = Math.round(markedupPrice * 100) / 100
-  return roundedPrice
+  priceWithMarkup: function(){
+    if (this.people) {
+      var markupPercent = this.percentages.perPerson(this.people);
+    } else {
+      var markupPercent = this.percentages[this.markupCategory]
+    };
+    var totalPrice = this.price * (1 + markupPercent);
+    return Math.round(totalPrice * 100) / 100
+  }
 };
