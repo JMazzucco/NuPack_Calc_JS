@@ -1,7 +1,7 @@
 var markupCalc = {
+  price: undefined,
   people: undefined,
   markupCategory: undefined,
-  price: undefined,
 
   percentages: {
     'flat': 0.05,
@@ -24,8 +24,39 @@ var markupCalc = {
   }
 };
 
-
-var addFlatMarkup = function(){
-  markupCalc.markupCategory = 'flat';
+var setPropertiesAndGetMarkup = function(price, markupCategory, people){
+  markupCalc.price = price;
+  markupCalc.people = people || undefined;
+  markupCalc.markupCategory = markupCategory;
   return markupCalc.priceWithMarkup();
 };
+
+
+
+//how to call a nested function so that it can be tested?
+
+var getUserInputAndAddMarkups = function(price, markupCategory, people){
+  people = people || undefined;
+
+  var addFlatMarkupToAllJobs = function(){
+    return setPropertiesAndGetMarkup(price, 'flat')
+  };
+
+  return addFlatMarkupToAllJobs();
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
