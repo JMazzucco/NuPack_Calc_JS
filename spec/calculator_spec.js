@@ -7,43 +7,43 @@ describe('Markup Calculator', function() {
   });
 
   describe('Flat Markup', function() {
-    it('should increase price by 5%', function() {
+    it('should return 5% of given price', function() {
       markupCalc.markupCategory = 'flat';
       markupCalc.price = 10;
-      expect(markupCalc.priceWithMarkup()).toEqual(10.5);
+      expect(markupCalc.markup()).toEqual(0.5);
     });
   });
 
   describe('Markup Per Person', function() {
-    it('should increase price by 1.5% for each person', function() {
+    it('should return 1.5% of given price', function() {
       markupCalc.markupCategory = 'perPerson';
       markupCalc.people = 3;
       markupCalc.price = 10;
-      expect(markupCalc.priceWithMarkup()).toEqual(10.36);
+      expect(markupCalc.markup()).toEqual(0.36);
     });
   });
 
   describe('Pharmaceuticals Markup', function() {
-    it('should increase price by 7.5%', function() {
+    it('should return 7.5% of given price', function() {
       markupCalc.markupCategory = 'pharma';
       markupCalc.price = 10;
-      expect(markupCalc.priceWithMarkup()).toEqual(10.75);
+      expect(markupCalc.markup()).toEqual(0.75);
     });
   });
 
   describe('Food Markup', function() {
-    it('should increase price by 13%', function() {
+    it('should return 13% of given price', function() {
       markupCalc.markupCategory = 'food';
       markupCalc.price = 10;
-      expect(markupCalc.priceWithMarkup()).toEqual(11.30);
+      expect(markupCalc.markup()).toEqual(1.30);
     });
   });
 
   describe('Electronics Markup', function() {
-    it('should increase price by 2%', function() {
+    it('should return 2% of given price', function() {
       markupCalc.markupCategory = 'electronics';
       markupCalc.price = 10;
-      expect(markupCalc.priceWithMarkup()).toEqual(10.20);
+      expect(markupCalc.markup()).toEqual(0.20);
     });
   });
 
@@ -51,31 +51,30 @@ describe('Markup Calculator', function() {
 
 describe('Markup Manager', function() {
   describe('Set Properties And Add Markup', function() {
-    it('should return price with Flat markup', function() {
-      expect(setPropertiesAndGetMarkup(10, 'flat')).toEqual(10.5);
+    it('should return Flat markup amount', function() {
+      expect(setPropertiesAndGetMarkup(10, 'flat')).toEqual(0.5);
     });
 
-    it('should return price with Per Person markup', function() {
-      expect(setPropertiesAndGetMarkup(10, 'perPerson', 3)).toEqual(10.36);
+    it('should return Per Person markup amount', function() {
+      expect(setPropertiesAndGetMarkup(10, 'perPerson', 3)).toEqual(0.36);
     });
 
-    it('should return price with Pharmaceuticals markup', function() {
-      expect(setPropertiesAndGetMarkup(10, 'pharma')).toEqual(10.75);
+    it('should return Pharmaceuticals markup amount', function() {
+      expect(setPropertiesAndGetMarkup(10, 'pharma')).toEqual(0.75);
     });
 
-    it('should return price with Food markup', function() {
-      expect(setPropertiesAndGetMarkup(10, 'food')).toEqual(11.30);
+    it('should return Food markup amount', function() {
+      expect(setPropertiesAndGetMarkup(10, 'food')).toEqual(1.30);
     });
 
-    it('should return price with Electronics markup', function() {
-      expect(setPropertiesAndGetMarkup(10, 'electronics')).toEqual(10.20);
+    it('should return Electronics markup amount', function() {
+      expect(setPropertiesAndGetMarkup(10, 'electronics')).toEqual(0.20);
     });
-
   });
 
-  describe('Add Flat Markup to all jobs', function() {
-    it('should add a Flat Markup to given price', function() {
-      expect(addFlatMarkupToAllJobs(10)).toEqual(10.5);
+  describe('Flat Markup for all jobs', function() {
+    it('should return a Flat Markup amount for given price', function() {
+      expect(addFlatMarkupToAllJobs(10)).toEqual(0.5);
     });
   });
 
