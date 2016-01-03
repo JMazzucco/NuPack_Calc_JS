@@ -31,17 +31,32 @@ var setPropertiesAndGetMarkup = function(price, markupCategory, people){
   return markupCalc.markup();
 };
 
-
-//how to call a nested function so that it can be tested?
-
-var addFlatMarkupToAllJobs = function(price){
-  return setPropertiesAndGetMarkup(price, 'flat')
-};
-
 var getUserInputAndAddMarkups = function(price, markupCategory, people){
   people = people || undefined;
 
-  var priceWithFlatMarkup = addFlatMarkupToAllJobs(price);
-  return obj;
+  var flatMarkup = setPropertiesAndGetMarkup(price, 'flat');
+  var materialMarkup = setPropertiesAndGetMarkup(price, markupCategory);
+  var perPersonMarkup = 0;
+
+  if (people) {
+     perPersonMarkup = setPropertiesAndGetMarkup(price, 'perPerson', people);
+  }
+
+  var priceWithMarkups = price + flatMarkup + materialMarkup + perPersonMarkup;
+  return priceWithMarkups;
 };
 
+var createJobInstances = function(arrayOfJobs) {
+  var jobs = [];
+
+  for (var i = 0; i<arrayOfJobs.length; i++) {
+    var price = arrayOfJobs[i].price;
+    var markupCategory = arrayOfJobs[i].markupCategory;
+    var people = arrayOfJobs[i].people || undefined;
+
+    var job = getUserInputAndAddMarkups (price, markupCategory, people);
+    jobs.push(job);
+  };
+
+  return jobs;
+};

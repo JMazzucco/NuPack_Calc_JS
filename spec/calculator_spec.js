@@ -72,11 +72,27 @@ describe('Markup Manager', function() {
     });
   });
 
-  describe('Flat Markup for all jobs', function() {
-    it('should return a Flat Markup amount for given price', function() {
-      expect(addFlatMarkupToAllJobs(10)).toEqual(0.5);
+  describe('Add markups and add them to given price', function() {
+    it('should add the flat, perPerson and pharma markups to the given price', function() {
+      expect(getUserInputAndAddMarkups(10, 'pharma', 1)).toEqual(11.37);
+    });
+
+    it('should add the flat and food markups to the given price', function() {
+      expect(getUserInputAndAddMarkups(10, 'food')).toEqual(11.80);
     });
   });
 
 
+  describe('Create an instance of getUserInputAndAddMarkups function for each job in given array ', function() {
+
+    var arrayOfJobs = [
+          {price: 10, markupCategory: 'pharma'},
+          {price: 20, markupCategory: 'food', people: 1},
+          {price: 50, markupCategory: 'electronics', people: 2}
+        ];
+    it('should return an array of 3 instances of getUserInputAndAddMarkups function', function() {
+      expect(createJobInstances(arrayOfJobs)).toEqual([11.25, 23.84, 54.7]);
+    });
+
+  });
 });
