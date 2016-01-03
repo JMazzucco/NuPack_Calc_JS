@@ -35,26 +35,18 @@ var setPropertiesAndGetMarkup = function(price, markupCategory, people){
 
 //how to call a nested function so that it can be tested?
 
-var getUserInputAndAddMarkups = function(price, markupCategory, people){
-  people = people || undefined;
 
-  var addFlatMarkupToAllJobs = function(){
-    return setPropertiesAndGetMarkup(price, 'flat')
-  };
-
-  return addFlatMarkupToAllJobs();
+var addFlatMarkupToAllJobs = function(price){
+  return setPropertiesAndGetMarkup(price, 'flat')
 };
 
 
+var getUserInputAndAddMarkups = function(price, markupCategory, people){
+  people = people || undefined;
 
-
-
-
-
-
-
-
-
+  var priceWithFlatMarkup = addFlatMarkupToAllJobs(price);
+  return obj;
+};
 
 
 

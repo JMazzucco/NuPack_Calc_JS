@@ -74,16 +74,8 @@ describe('Markup Manager', function() {
   });
 
   describe('Add Flat Markup to all jobs', function() {
-    it('should add a Flat Markup for Pharmaceuticals', function() {
-      expect(getUserInputAndAddMarkups(10, 'pharma')).toEqual(10.5);
-    });
-
-    it('should add a Flat Markup for Electronics', function() {
-      expect(getUserInputAndAddMarkups(10, 'food')).toEqual(10.5);
-    });
-
-    it('should add a Flat Markup for Food', function() {
-      expect(getUserInputAndAddMarkups(10, 'electronics')).toEqual(10.5);
+    it('should add a Flat Markup to given price', function() {
+      expect(addFlatMarkupToAllJobs(10)).toEqual(10.5);
     });
   });
 
