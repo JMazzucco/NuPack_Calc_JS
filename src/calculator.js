@@ -34,16 +34,25 @@ var setPropertiesAndGetMarkup = function(price, markupCategory, people){
 var getUserInputAndAddMarkups = function(price, markupCategory, people){
   people = people || undefined;
 
+  // console.log(price +" "+markupCategory+" "+people);
+
   var flatMarkup = setPropertiesAndGetMarkup(price, 'flat');
   var materialMarkup = setPropertiesAndGetMarkup(price, markupCategory);
   var perPersonMarkup = 0;
 
-  if (people) {
-     perPersonMarkup = setPropertiesAndGetMarkup(price, 'perPerson', people);
-  }
 
-  var priceWithMarkups = price + flatMarkup + materialMarkup + perPersonMarkup;
-  return priceWithMarkups;
+  if (people > 0) {
+     perPersonMarkup = setPropertiesAndGetMarkup(price, 'perPerson', people);
+  };
+
+  var priceFloat = parseFloat(price);
+  var flatMarkupFloat = parseFloat(flatMarkup);
+  var materialMarkupFloat = parseFloat(materialMarkup);
+  var perPersonMarkupFloat = parseFloat(perPersonMarkup);
+
+  var priceWithMarkups = priceFloat + flatMarkupFloat + materialMarkupFloat + perPersonMarkupFloat;
+
+  return Math.round(priceWithMarkups * 100) / 100;
 };
 
 var createJobInstances = function(arrayOfJobs) {
@@ -53,8 +62,8 @@ var createJobInstances = function(arrayOfJobs) {
     var price = arrayOfJobs[i].price;
     var markupCategory = arrayOfJobs[i].markupCategory;
     var people = arrayOfJobs[i].people || undefined;
-
     var job = getUserInputAndAddMarkups (price, markupCategory, people);
+
     jobs.push(job);
   };
 

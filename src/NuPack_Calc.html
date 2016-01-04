@@ -8,18 +8,25 @@
 	<h3>NuPack Caculator</h3>
 	<form>
 	  Base Price:
-	  <input type="text" name="price">
+	  <input id="price" type="text" name="price">
 	  <br>
 	  Number of Workers Needed:
-	  <input type="text" name="works-needed">
+	  <input id="workers-needed" type="text" name="workers-needed">
 	  <br>
 	  Product Material:
-	  <input type="text" name="lastname">
-	  <br><br>
-	  <input type="submit" value="Add Job">
+	  <input id="markupCategory" type="text" name="markupCategory">
+	  <br/><br/>
+	  <button id="save" type="button">Add Job</button>
 	</form>
 
 	<button type="button" id="done-btn">Done</button>
+
+	<br/><br/>
+	<h3>Price with Markup:</h3>
+
+	<ul id="results-list">
+	</ul>
+
 </body>
 	<script src="calculator.js"></script>
 	<script src="UI.js"></script>
