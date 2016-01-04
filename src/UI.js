@@ -3,11 +3,9 @@ var arrayOfJobs = [];
 document.getElementById('save').onclick = function() {
 		var price = document.getElementById('price').value
 		var people = document.getElementById('workers-needed').value
-
 		var markupCategory = document.getElementById('markupCategory').value
 
 		var job = {price: price, markupCategory: markupCategory, people: people }
-
 		arrayOfJobs.push(job);
 
 		document.getElementById('price').value = "";
@@ -18,7 +16,7 @@ document.getElementById('save').onclick = function() {
 	}
 
 document.getElementById('done-btn').onclick = function() {
-		var arrayOfFinalPrices = createJobInstances(arrayOfJobs);
+		var arrayOfFinalPrices = arrayOfTotalPrices(arrayOfJobs);
 		document.getElementById('results-list').innerHTML = "";
 		for (var i=0;i<arrayOfFinalPrices.length; i++){
 			 var newListItem = document.createElement("li");

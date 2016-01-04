@@ -24,23 +24,19 @@ var markupCalc = {
   }
 };
 
+
 var setPropertiesAndGetMarkup = function(price, markupCategory, people){
   markupCalc.price = price;
-  markupCalc.people = people || undefined;
+  markupCalc.people = people;
   markupCalc.markupCategory = markupCategory;
   return markupCalc.markup();
 };
 
-var getUserInputAndAddMarkups = function(price, markupCategory, people){
-  people = people || undefined;
 
-  // console.log(price +" "+markupCategory+" "+people);
-
+var addMarkupsToPrice = function(price, markupCategory, people){
   var flatMarkup = setPropertiesAndGetMarkup(price, 'flat');
   var materialMarkup = setPropertiesAndGetMarkup(price, markupCategory);
   var perPersonMarkup = 0;
-
-
   if (people > 0) {
      perPersonMarkup = setPropertiesAndGetMarkup(price, 'perPerson', people);
   };
@@ -55,15 +51,15 @@ var getUserInputAndAddMarkups = function(price, markupCategory, people){
   return Math.round(priceWithMarkups * 100) / 100;
 };
 
-var createJobInstances = function(arrayOfJobs) {
+
+var arrayOfTotalPrices = function(arrayOfJobs) {
   var jobs = [];
 
-  for (var i = 0; i<arrayOfJobs.length; i++) {
+  for (var i = 0; i < arrayOfJobs.length; i++) {
     var price = arrayOfJobs[i].price;
     var markupCategory = arrayOfJobs[i].markupCategory;
     var people = arrayOfJobs[i].people || undefined;
-    var job = getUserInputAndAddMarkups (price, markupCategory, people);
-
+    var job = addMarkupsToPrice (price, markupCategory, people);
     jobs.push(job);
   };
 
