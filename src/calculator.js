@@ -24,14 +24,12 @@ var markupCalc = {
   }
 };
 
-
 var setPropertiesAndGetMarkup = function(price, markupCategory, people){
   markupCalc.price = price;
   markupCalc.people = people;
   markupCalc.markupCategory = markupCategory;
   return markupCalc.markup();
 };
-
 
 var addMarkupsToPrice = function(price, markupCategory, people){
   var flatMarkup = setPropertiesAndGetMarkup(price, 'flat');
@@ -50,7 +48,6 @@ var addMarkupsToPrice = function(price, markupCategory, people){
 
   return Math.round(priceWithMarkups * 100) / 100;
 };
-
 
 var arrayOfTotalPrices = function(arrayOfJobs) {
   var jobs = [];
