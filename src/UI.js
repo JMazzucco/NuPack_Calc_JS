@@ -1,28 +1,31 @@
 var arrayOfJobs = [];
 
+var clearFields = function() {
+  document.getElementById('price').value = "";
+  document.getElementById('workers-needed').value = "";
+  document.getElementById('markupCategory').value = "";
+}
+
+
 document.getElementById('save').onclick = function() {
-		var price = document.getElementById('price').value
-		var people = document.getElementById('workers-needed').value
-		var markupCategory = document.getElementById('markupCategory').value
+  var price = document.getElementById('price').value
+  var people = document.getElementById('workers-needed').value
+  var markupCategory = document.getElementById('markupCategory').value
 
-		var job = {price: price, markupCategory: markupCategory, people: people }
-		arrayOfJobs.push(job);
+  var job = {price: price, markupCategory: markupCategory, people: people }
 
-		document.getElementById('price').value = "";
-		document.getElementById('workers-needed').value = "";
-		document.getElementById('markupCategory').value = "";
-
-		return arrayOfJobs;
-	}
+  clearFields();
+  arrayOfJobs.push(job);
+  }
 
 document.getElementById('done-btn').onclick = function() {
-		var arrayOfFinalPrices = arrayOfTotalPrices(arrayOfJobs);
-		document.getElementById('results-list').innerHTML = "";
-		for (var i=0;i<arrayOfFinalPrices.length; i++){
-			 var newListItem = document.createElement("li");
-			 newListItem.innerHTML = arrayOfFinalPrices[i] +"<br/>";
-       document.getElementById('results-list').appendChild(newListItem);
-		};
+  var arrayOfFinalPrices = arrayOfTotalPrices(arrayOfJobs);
+  document.getElementById('results-list').innerHTML = "";
+  for (var i=0;i<arrayOfFinalPrices.length; i++){
+     var newListItem = document.createElement("li");
+     newListItem.innerHTML = arrayOfFinalPrices[i] +"<br/>";
+     document.getElementById('results-list').appendChild(newListItem);
+  };
 
-		arrayOfJobs = [];
+  arrayOfJobs = [];
 };
